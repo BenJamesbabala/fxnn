@@ -88,4 +88,3 @@ Thanks to Richard Marko's `python-mnist` for doing MNIST preprocessing.
 ## References
 
 TODO
-xnn - train CNNs faster and better using fixed convolution kernel
