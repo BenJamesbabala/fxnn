@@ -2,7 +2,7 @@
 
 ## What is this?
 
-We found training CNN with a fixed untrainable 3x3 convolution followed by a trainable 1x1 convolution(technically just a GEMM) can *improve* CNN training convergence speed while requiring *less computation*. Currently this is supported with empirical evidence on small datasets including MNIST and CIFAR10. While the scalability of this method remains to be confirmed.
+We found training CNN with a fixed *untrainable* 3x3 convolution followed by a *trainable* 1x1 convolution(technically just a GEMM) can *improve* CNN training convergence speed while requiring *less computation*. Currently this is supported with empirical evidence on small datasets including MNIST and CIFAR10. While the scalability of this method remains to be confirmed.
 
 ## A test run
 
@@ -50,7 +50,7 @@ For MNIST, go to [here](http://yann.lecun.com/exdb/mnist/) and download all 4 .g
 
 For CIFAR10, go to [here](https://www.cs.toronto.edu/~kriz/cifar.html) and download the python version, place it in `data/image/cifar10`. Just uncompress it and CIFAR10 dataset should be ready to go.
 
-### Launch experiment
+### Run experiment
 
 To run experiment with default setting.
 
@@ -66,14 +66,14 @@ To view help on hyperparameters setting.
 
 ### Analyse data
 
-training/validation loss curve and model parameters during training will be recorded in `rec-$(dataset)-$(model).mat` file (MATLAB format). Open the file with your favourite tool to analyse
+training/validation loss curve and model parameters during training will be recorded in `rec-$(dataset)-$(model).mat` file (MATLAB format). Open the file with your favourite tool to analyse.
 
 
 ## How it works
 
 The modified convolution layer takes M image channels and generates 5M image channels via 5 fixed 3x3 convolutions. Then all channels were fed into trainable 1x1 convolution to generate N output channels.
 
-`M --(3x3 fixed)-> 5N --(1x1)-> N`
+`M --(3x3 fixed)-> 5M --(1x1)-> N`
 
 3x3 convolution kernels are following ones:
 
