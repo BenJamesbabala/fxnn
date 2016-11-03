@@ -63,7 +63,7 @@ if th.config.device[:3] == 'gpu':
         global _g_params_di
         name_W = name_+'_w'
         name_B = name_+'_b'
-        ir = 1.4/sqrt(idim_*5+odim_) if init_scale_ is None else init_scale_
+        ir = 0.3/sqrt(idim_*5+odim_) if init_scale_ is None else init_scale_
         v_W = _get_sharedv(name_W, (idim_*5,odim_), (-ir,ir))
         v_B = _get_sharedv(name_B, (odim_,))
         s_y = simple_conv(s_x_)
@@ -73,7 +73,7 @@ else:
         global _g_params_di
         name_W = name_+'_w'
         name_B = name_+'_b'
-        ir = 1.4/sqrt(idim_*5+odim_) if init_scale_ is None else init_scale_
+        ir = 0.3/sqrt(idim_*5+odim_) if init_scale_ is None else init_scale_
         v_W = _get_sharedv(name_W, (idim_*5,odim_), (-ir,ir))
         v_B = _get_sharedv(name_B, (odim_,))
         ker = np.asarray([
