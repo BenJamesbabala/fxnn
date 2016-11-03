@@ -52,20 +52,28 @@ For CIFAR10, go to [here](https://www.cs.toronto.edu/~kriz/cifar.html) and downl
 
 ### Launch experiment
 
-Just enter `python3 fxnn.py` to run experiment with default setting. `python3 fxnn.py -h` to view help on hyperparameters settting.
+To run experiment with default setting.
 
-**NOTE:** CIFAR10 dataset tend to converge much slower than MNIST, you may want longer training like `python3 fxnn.py -d CIFAR10 -nrec 1000 -ipr 250`
+`python3 fxnn.py`
 
-### Analysis data
+To view help on hyperparameters setting.
 
-training/validation loss curve and model parameters during training will be recorded in `rec-$(dataset)-$(model).mat` file (MATLAB format) after training. Open the file with your favourite tool to analysis.
+`python3 fxnn.py -h`
+
+**NOTE:** CIFAR10 dataset tend to converge much slower than MNIST, you may want longer training like:
+
+`python3 fxnn.py -d CIFAR10 -nrec 1000 -ipr 250`
+
+### Analyse data
+
+training/validation loss curve and model parameters during training will be recorded in `rec-$(dataset)-$(model).mat` file (MATLAB format). Open the file with your favourite tool to analyse
 
 
 ## How it works
 
 The modified convolution layer takes M image channels and generates 5M image channels via 5 fixed 3x3 convolutions. Then all channels were fed into trainable 1x1 convolution to generate N output channels.
 
-`N --(3x3 fixed)-> 5N --(1x1)-> M`
+`M --(3x3 fixed)-> 5N --(1x1)-> N`
 
 3x3 convolution kernels are following ones:
 
@@ -79,7 +87,7 @@ We've written a slightly optimized version of this operation with CUDA, in `kern
 ## Known Bugs/Issues
 
 - Currently does not support theano `gpuarray` backend.
-- GPU op implementation cannot take image larger than 512x512
+- GPU op implementation cannot take image larger than 512x512.
 
 ## Credits
 
